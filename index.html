@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var input = prompt("한 테이블에 몇 명씩?");
+        input = parseInt(input);
+        members = ["장세희", "권민우", "차유진", "이혜수", "김윤지", "최세진", "이윤표", "이상민", "유기민", "안나영", "박범서", "이도영",
+            "엄연진", "서정우", "박종명", "이재완", "김보강", "한만희", "김준영", "윤가은",
+            "강현찬", "곽민정", "김민준", "김우석", "김유진", "김유현", "박시현", "이나경", "이준", "홍현지", "안예지", "강예린"];
+
+        MAX = members.length;
+
+        lists = [];
+        list_num = [];
+        mem_li = [];
+        ran_num = Math.floor(Math.random() * MAX);
+
+        for (var i = 0; i < MAX; i++) {
+            if (list_num.indexOf(ran_num) != -1) {
+                ran_num = Math.floor(Math.random() * MAX);
+                i--;
+            } else {
+                list_num.push(ran_num);
+            }
+        }
+
+        document.write("총 인원 : " + MAX + "<br><br><br>");
+        n = 0;
+        cnt = 1;
+        while (n+input < list_num.length) {
+            document.write(cnt + "조 : ");
+            cnt ++;
+            for (var i = n; i < n+input; i++) {
+                mem_li.push(members[list_num[i]]);
+                document.writeln(members[list_num[i]]);
+            }
+            document.write("<br><br>");
+            n += input;
+            lists.push(mem_li);
+            mem_li = [];
+        }
+
+        document.write(cnt + "조 : ");
+        cnt ++;
+        for (var i = n; i < list_num.length; i++) {
+            mem_li.push(members[list_num[i]]);
+            document.writeln(members[list_num[i]]);
+        }
+
+
+    </script>
+</body>
+</html>
